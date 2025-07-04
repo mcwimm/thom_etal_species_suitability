@@ -30,9 +30,8 @@ library(kableExtra)
 theme_set(theme_classic())
 ```
 
-
 ```{r load}
-dat = fread("data/all_traits.csv")
+dat = fread("data/all_traits.csv", encoding = 'Latin-1')
 colnames(dat)[1:8] = c("species", "drought", "late_frost", "shade", "waterlogging",
                        "nutrients", "score_1", "score_2")
 
@@ -41,22 +40,25 @@ dat = dat %>%
   mutate(cat = ifelse(score_1 > 4, "very suitable",
                       ifelse(score_1 > 3, "suitable",
                              ifelse(score_1 > 2, "partially suitable",
-                                    "unsuitable")))) %>% 
+                                    "unsuitable")))) 
+
+lbl_dict = fread("data/label_dict.csv", encoding = 'Latin-1')
+
+dat = dat %>% 
+  left_join(., lbl_dict, by = c("cat" = "english")) %>% 
+  rename("cat_de" = "deutsch") %>%  
+  left_join(., lbl_dict %>% dplyr::select(-short),
+            by = c("type" = "english")) %>% 
+  rename("type_de" = "deutsch")
+
+dat = dat %>% 
   mutate(cat = factor(cat,
                       levels = c("very suitable", "suitable",
-                                 "partially suitable", "unsuitable")))
+                                 "partially suitable", "unsuitable")),
+         cat_de = factor(cat_de,
+                      levels = c("sehr geeignet", "geeignet",
+                                 "teilweise geeignet", "ungeeignet")))
 ```
-
-```{r}
-grds = list("drought" = c("darkred", "blue3", "Drought tolerance"),
-            "late_frost" = c("orange2", "blue4", "Late frost tolerance"),
-            "shade" = c("orange4", "orange1", "Shade tolerance"),
-            "waterlogging" = c("blue", "steelblue", "Water logging tolerance"),
-            "nutrients" = c("grey", "yellow4", "Nutrient requirements"),
-            "score_1" = c("orange2", "blue4", "Score (drought and late frost)"),
-            "score_2" = c("orange2", "blue4", "Score (drought x 2 and late frost)"))
-```
-
 
 # Table 1
 
@@ -89,15 +91,15 @@ ggsave("figs/tab1.jpg", width = 8, height = 12)
 
 # Figure 2
 
-::: {.panel-tabset}
+::: panel-tabset
 
-## Option A
+## Label EN
 
 ```{r out.width="100%"}
 dat %>% 
   ggplot(., aes(x = drought, y = late_frost, 
                 shape = type,
-                fill = score_1)) +
+                fill = cat)) +
   geom_point(size = 4,
              alpha = 0.6) +
   geom_label_repel(aes(label = species), 
@@ -110,27 +112,67 @@ dat %>%
                    size = 2.5, 
                    show.legend = F) +
   scale_shape_manual(values = c(21, 22)) +
-  scale_fill_viridis_c(option = "inferno", limits = c(1, 5), end = 0.9) +
+  scale_fill_viridis_d(option = "inferno", direction = -1, end = 0.9) +
   scale_size_continuous(range = c(0, 6)) +
   scale_x_continuous(breaks = 1:5, limits = c(1, 5.2),
                      labels = c("1\nlow", "2", "3", "4", "5\nhigh")) +
   scale_y_continuous(breaks = 1:5, limits = c(1, 5.2),
                      labels = c("1\nlow", "2", "3", "4", "high\n5")) +
-  labs(x = grds[["drought"]][3],
-       y = grds[["late_frost"]][3],
-       fill = "Score",
-       size = "Score",
-       shape = "Functional\ngroup") +
+  guides(fill = guide_legend(override.aes = aes(shape = 21))) +
+  labs(x = lbl_dict[lbl_dict$short == "drought", "english"][[1]],
+       y = lbl_dict[lbl_dict$short == "late_frost", "english"][[1]],
+       fill = lbl_dict[lbl_dict$short == "score", "english"][[1]],
+       shape = lbl_dict[lbl_dict$short == "func_group", "english"][[1]]) +
   theme(text = element_text(size = 13))
 
 ggsave(paste("figs/fig_2_drought_frost.jpg", sep = ""), width = 8.5, height = 5)
 ```
 
-## Option B
+## Label DE
 
 ```{r out.width="100%"}
 dat %>% 
   ggplot(., aes(x = drought, y = late_frost, 
+                shape = type_de,
+                fill = cat_de)) +
+  geom_point(size = 4,
+             alpha = 0.6) +
+  geom_label_repel(aes(label = name_dt), #species 
+                   alpha = 0.65, 
+                   fill = "white",
+                   segment.size = 0.05,
+                   min.segment.length = 0,
+                   label.size = NA,
+                   label.padding = 0.01,
+                   size = 2.5, 
+                   show.legend = F) +
+  scale_shape_manual(values = c(21, 22)) +
+  scale_fill_viridis_d(option = "inferno", direction = -1, end = 0.9) +
+  scale_size_continuous(range = c(0, 6)) +
+  scale_x_continuous(breaks = 1:5, limits = c(1, 5.2),
+                     labels = c("1\nlow", "2", "3", "4", "5\nhigh")) +
+  scale_y_continuous(breaks = 1:5, limits = c(1, 5.2),
+                     labels = c("1\nlow", "2", "3", "4", "high\n5")) +
+  guides(fill = guide_legend(override.aes = aes(shape = 21))) +
+  labs(x = lbl_dict[lbl_dict$short == "drought", "deutsch"][[1]],
+       y = lbl_dict[lbl_dict$short == "late_frost", "deutsch"][[1]],
+       fill = lbl_dict[lbl_dict$short == "score", "deutsch"][[1]],
+       shape = lbl_dict[lbl_dict$short == "func_group", "deutsch"][[1]]) +
+  theme(text = element_text(size = 13))
+
+ggsave(paste("figs/fig_2_drought_frost_de.jpg", sep = ""), width = 8.5, height = 5)
+```
+:::
+
+# Figure 3
+
+::: panel-tabset
+
+## Label EN
+
+```{r out.width="100%"}
+dat %>% 
+  ggplot(., aes(x = nutrients, y = waterlogging, 
                 shape = type,
                 fill = cat)) +
   geom_point(size = 4,
@@ -152,67 +194,25 @@ dat %>%
   scale_y_continuous(breaks = 1:5, limits = c(1, 5.2),
                      labels = c("1\nlow", "2", "3", "4", "high\n5")) +
   guides(fill = guide_legend(override.aes = aes(shape = 21))) +
-  labs(x = grds[["drought"]][3],
-       y = grds[["late_frost"]][3],
-       fill = "Score",
-       size = "Score",
-       shape = "Functional\ngroup") +
-  theme(text = element_text(size = 13))
-
-ggsave(paste("figs/fig_2_drought_frost_2.jpg", sep = ""), width = 8.5, height = 5)
-```
-
-:::
-
-# Figure 3
-
-::: {.panel-tabset}
-
-## Option A
-
-```{r out.width="100%"}
-dat %>% 
-  ggplot(., aes(x = nutrients, y = waterlogging, 
-                shape = type,
-                fill = score_1)) +
-  geom_point(size = 4,
-             alpha = 0.6) +
-  geom_label_repel(aes(label = species), 
-                   alpha = 0.65, 
-                   fill = "white",
-                   segment.size = 0.05,
-                   min.segment.length = 0,
-                   label.size = NA,
-                   label.padding = 0.01,
-                   size = 2.5, 
-                   show.legend = F) +
-  scale_shape_manual(values = c(21, 22)) +
-  scale_fill_viridis_c(option = "inferno", limits = c(1, 5), end = 0.9) +
-  scale_size_continuous(range = c(0, 6)) +
-  scale_x_continuous(breaks = 1:5, limits = c(1, 5.2),
-                     labels = c("1\nlow", "2", "3", "4", "5\nhigh")) +
-  scale_y_continuous(breaks = 1:5, limits = c(1, 5.2),
-                     labels = c("1\nlow", "2", "3", "4", "high\n5")) +
-  labs(x = grds[["nutrients"]][3],
-       y = grds[["waterlogging"]][3],
-       fill = "Score",
-       size = "Score",
-       shape = "Functional\ngroup") +
+  labs(x = lbl_dict[lbl_dict$short == "nutrients", "english"][[1]],
+       y = lbl_dict[lbl_dict$short == "waterlogging", "english"][[1]],
+       fill = lbl_dict[lbl_dict$short == "score", "english"][[1]],
+       shape = lbl_dict[lbl_dict$short == "func_group", "english"][[1]]) +
   theme(text = element_text(size = 13))
 
 ggsave(paste("figs/fig_3_nutrients_waterlogging.jpg", sep = ""), width = 8.5, height = 5)
 ```
 
-## Option B
+## Label DE
 
 ```{r out.width="100%"}
 dat %>% 
   ggplot(., aes(x = nutrients, y = waterlogging, 
-                shape = type,
-                fill = cat)) +
+                shape = type_de,
+                fill = cat_de)) +
   geom_point(size = 4,
              alpha = 0.6) +
-  geom_label_repel(aes(label = species), 
+  geom_label_repel(aes(label = name_dt), 
                    alpha = 0.65, 
                    fill = "white",
                    segment.size = 0.05,
@@ -229,60 +229,35 @@ dat %>%
   scale_y_continuous(breaks = 1:5, limits = c(1, 5.2),
                      labels = c("1\nlow", "2", "3", "4", "high\n5")) +
   guides(fill = guide_legend(override.aes = aes(shape = 21))) +
-  labs(x = grds[["nutrients"]][3],
-       y = grds[["waterlogging"]][3],
-       fill = "Score",
-       size = "Score",
-       shape = "Functional\ngroup") +
+  labs(x = lbl_dict[lbl_dict$short == "nutrients", "deutsch"][[1]],
+       y = lbl_dict[lbl_dict$short == "waterlogging", "deutsch"][[1]],
+       fill = lbl_dict[lbl_dict$short == "score", "deutsch"][[1]],
+       shape = lbl_dict[lbl_dict$short == "func_group", "deutsch"][[1]]) +
   theme(text = element_text(size = 13))
 
-ggsave(paste("figs/fig_3_nutrients_waterlogging_2.jpg", sep = ""), width = 8.5, height = 5)
+ggsave(paste("figs/fig_3_nutrients_waterlogging_de.jpg", sep = ""), width = 8.5, height = 5)
 ```
 :::
 
 # Figure 4
 
-::: {.panel-tabset}
+::: panel-tabset
 
-## Option A
-
-```{r fig.height=8}
+```{r}
 trait = "shade"
 trait <- sym(trait)
 levs = dat %>% arrange(!!trait) %>% select(species)
-
 p1 = dat %>%
   ggplot(., aes(x = !!trait)) +
   coord_cartesian(xlim= c(1, 5)) +
-  geom_density(fill = "grey", alpha =.7) + #grds[[trait]][2]
+  geom_density(fill = "grey", alpha =.7) + 
   scale_y_continuous(breaks = c(0, 0.25, 0.5)) +
   theme(axis.title = element_blank(),
         axis.text = element_blank())
-
-p2 = dat %>% 
-  mutate(species = factor(species, levels = levs$species)) %>% 
-  ggplot(., aes(x = species, y = !!trait, 
-                fill = score_1)) +
-  geom_bar(stat = "identity", alpha = 0.6) +
-  geom_text(aes(label = !!trait), nudge_y = 0.1, size = 2.5) +
-  scale_fill_viridis_c(option = "inferno", limits = c(1, 5), end = 0.9) +
-  scale_y_continuous(breaks = 1:5,
-                     labels = c("1\nlow", "2", "3", "4", "5\nhigh")) +
-  coord_flip(ylim= c(1, 5)) +
-  labs(y = grds[[trait]][3],
-       fill = "Score") +
-  theme(axis.title.y = element_blank())
-
-ggarrange(p1, ggplot() + theme_void(), p2, ncol = 1, 
-          heights = c(0.5, -0.2, 3),
-          align = "hv",
-          legend = "bottom",
-          common.legend = T)
-
-ggsave(paste("figs/fig_4_", trait, "_density.jpg", sep = ""), width = 8, height = 7.3)
 ```
 
-## Option B
+
+## Label EN
 
 ```{r fig.height=8, out.width="100%"}
 p2 = dat %>% 
@@ -296,8 +271,8 @@ p2 = dat %>%
   scale_y_continuous(breaks = 1:5,
                      labels = c("1\nlow", "2", "3", "4", "5\nhigh")) +
   coord_flip(ylim= c(1, 5)) +
-  labs(y = grds[[trait]][3],
-       fill = "Score") +
+  labs(y = lbl_dict[lbl_dict$short == trait, "english"][[1]],
+       fill = lbl_dict[lbl_dict$short == "score", "english"][[1]]) +
   theme(axis.title.y = element_blank(),
         axis.text.y = element_text(face = "italic"))
 
@@ -307,12 +282,42 @@ ggarrange(p1, ggplot() + theme_void(), p2, ncol = 1,
           legend = "bottom",
           common.legend = T)
 
-ggsave(paste("figs/fig_4_", trait, "_density_2.jpg", sep = ""), width = 9, height = 7.3)
+ggsave(paste("figs/fig_4_", trait, "_density.jpg", sep = ""), width = 9, height = 7.3)
 ```
 
+## Label DE
+
+```{r fig.height=8, out.width="100%"}
+levs = dat %>% arrange(!!trait) %>% 
+  dplyr:: select(name_dt)
+
+p2 = dat %>% 
+  mutate(name_dt = factor(name_dt, levels = levs$name_dt)) %>% 
+  ggplot(., aes(x = name_dt, y = !!trait, 
+                fill = cat_de)) +
+  geom_bar(stat = "identity", alpha = 0.6, linewidth = 0.1) +
+  geom_text(aes(label = !!trait), nudge_y = 0.1, size = 2.5) +
+  scale_fill_viridis_d(option = "inferno", direction = -1, end = 0.9) +  
+  scale_color_viridis_d(option = "inferno", direction = -1, end = 0.9) +
+  scale_y_continuous(breaks = 1:5,
+                     labels = c("1\nlow", "2", "3", "4", "5\nhigh")) +
+  coord_flip(ylim= c(1, 5)) +
+  labs(y = lbl_dict[lbl_dict$short == trait, "deutsch"][[1]],
+       fill = lbl_dict[lbl_dict$short == "score", "deutsch"][[1]]) +
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_text(face = "italic"))
+
+ggarrange(p1, ggplot() + theme_void(), p2, ncol = 1, 
+          heights = c(0.5, -0.2, 3),
+          align = "hv",
+          legend = "bottom",
+          common.legend = T)
+
+ggsave(paste("figs/fig_4_", trait, "_density_de.jpg", sep = ""), width = 9, height = 7.3)
+```
 :::
 
-# Correlations: Score ~ site conditions
+# Correlations: Score \~ site conditions
 
 ```{r}
 res = data.frame()
@@ -339,5 +344,3 @@ res %>%
   kbl(caption = "Results of Shapiro-Wilk normality test and Spearman's rank correlation.") %>%
   kable_styling(full_width = F)
 ```
-
-

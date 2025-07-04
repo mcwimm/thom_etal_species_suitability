@@ -1,0 +1,16 @@
+short;english;deutsch
+drought;Drought tolerance;Trockentoleranz
+late_frost;Late frost tolerance;Spätfrosttoleranz
+shade;Shade tolerance;Schattentoleranz
+waterlogging;Water logging tolerance;Staunässetoleranz
+nutrients;Nutrient requirements;Nährstoffbedarf
+score;Score;Score
+score_1;Score (drought and late frost);Score (Trockenheit and late frost)
+score_2;Score (drought x 2 and late frost);Score (Trockenheit x 2 and late frost)
+suit_vs;very suitable;sehr geeignet
+suit_s;suitable;geeignet
+suit_ps;partially suitable;teilweise geeignet
+suit_u;unsuitable;ungeeignet
+func_group;Functional group;Funktionale Gruppe
+conifers;conifers;Nadelbaumart
+broadleaves;broadleaves;Laubbaumart

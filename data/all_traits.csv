@@ -1,53 +1,53 @@
-Species;Drought tolerance;Late frost tolerance (recruitment);Shade tolerance;Waterlogging tolerance;Nutrient requirements;Score (drought and late frost);Score (drought x 2 and late frost);name_dt;family_dt;family_lt;root_system;frost;origin;type
-Alnus glutinosa;1,31;3,73;1,57;3,9;4,33;2,52;2,11;Schwarz-Erle;Birkengewächse;Betulaceae;Herzwurzler;-28;einheimisch;broadleaves
-Alnus incana;2,64;4,83;1,58;2,84;2,2;3,73;3,37;Grau-Erle;Birkengewächse;Betulaceae;Herzwurzler;-36;einheimisch;broadleaves
-Betula maximowicziana;1,57;4,5;1,25;1,25;2,5;3,04;2,55;Lindenblättrige Birke;Birkengewächse;Betulaceae;Herzwurzler;-10;Asien;broadleaves
-Betula pendula;2,77;4,14;1,26;1,67;1,4;3,46;3,23;Hänge-Birke;Birkengewächse;Betulaceae;Herzwurzler;-40;einheimisch;broadleaves
-Carpinus betulus;2,83;2,71;4,24;1,65;2,83;2,77;2,79;Hainbuche;Birkengewächse;Betulaceae;Herzwurzler;-20;einheimisch;broadleaves
-Corylus avellana;3,04;3;3,53;1,68;3,33;3,02;3,03;Gemeine Hasel;Birkengewächse;Betulaceae;Flachwurzler;-28;einheimisch;broadleaves
-Corylus colurna;3,57;2,5;2,365;1,53;1,89;3,03;3,21;Baum-Hasel;Birkengewächse;Betulaceae;Herzwurzler;-20;einheimisch;broadleaves
-Ostrya carpinifolia;3,07;3;3,94;1,41;3;3,04;3,05;Hopfenbuche;Birkengewächse;Betulaceae;;-20;einheimisch;broadleaves
-Paulownia tomentosa;3;1,58;2;1;2;2,29;2,53;Chinesischer Blauglockenbaum;Braunwurzgewächse;Scrophulariaceae;;-20;Asien;broadleaves
-Castanea sativa;4,15;1,47;3,58;1,32;2,3;2,81;3,26;Ess-Kastanie;Buchengewächse;Fagaceae;Tiefwurzler;-20;einheimisch;broadleaves
-Fagus orientalis;2,7;1,5;4,2;1;3;2,1;2,3;Orient-Buche;Buchengewächse;Fagaceae;Herzwurzler;-20;Asien;broadleaves
-Fagus sylvatica;2,15;1,69;4,89;1,02;2,44;1,92;1,99;Gemeine Buche;Buchengewächse;Fagaceae;Herzwurzler;-20;einheimisch;broadleaves
-Quercus petraea;3,34;2,51;2,35;1,2;2,23;2,92;3,06;Trauben-Eiche;Buchengewächse;Fagaceae;;-28;einheimisch;broadleaves
-Quercus pubescens;4,37;2,29;2,31;1,39;2,25;3,33;3,67;Flaum-Eiche;Buchengewächse;Fagaceae;;-20;Südeuropa;broadleaves
-Quercus robur;2,72;2,47;1,7;1,89;2,66;2,6;2,64;Stiel-Eiche;Buchengewächse;Fagaceae;Tiefwurzler;-28;einheimisch;broadleaves
-Quercus rubra;2,61;2,57;3,21;1,12;2,12;2,59;2,59;Rot-Eiche;Buchengewächse;Fagaceae;Pfahlwurzel;-28;Nordamerika;broadleaves
-Taxus baccata;3;3,44;4,48;1,32;2,85;3,22;3,15;Gemeine Eibe;Eibengewächse;Taxaceae;;-32;einheimisch;conifers
-Robinia pseudoacacia;4,11;2,22;1,72;1,07;4,25;3,17;3,48;Robinie;Hülsenfrüchtler;Fabaceae;;-32;Nordamerika;broadleaves
-Abies alba;2,43;1,29;4,9;1,02;2,53;1,86;2,05;Weiß-tanne;Kieferngewächse;Pinaceae;;-28;einheimisch;conifers
-Abies grandis;2,33;2,78;4,01;1,57;3;2,56;2,48;Küsten-Tanne;Kieferngewächse;Pinaceae;;-20;Nordamerika;conifers
-Cedrus libani;2,75;1;1,35;1,03;2,5;1,88;2,17;Libanon Zeder;Kieferngewächse;Pinaceae;Herzwurzler;-16;Asien;conifers
-Larix decidua;2,06;3,74;1,12;1,1;2,18;2,9;2,62;Europäische Lärche;Kieferngewächse;Pinaceae;;-36;;conifers
-Larix kaempferi;2;3,67;1,86;1,58;1,89;2,84;2,56;Japanische Lärche;Kieferngewächse;Pinaceae;;-28;Asien;conifers
-Picea abies;1,55;3,22;4,28;1,22;2,31;2,39;2,11;Gemeine Fichte;Kieferngewächse;Pinaceae;Flachwurzler;-28;einheimisch;conifers
-Pinus nigra;4,79;3,33;2,1;1,39;1,65;4,06;4,31;Schwarz-Kiefer;Kieferngewächse;Pinaceae;;-24;Südeuropa;conifers
-Pinus sylvestris;4,72;4,93;1,56;2,63;1,17;4,83;4,79;Wald-Kiefer;Kieferngewächse;Pinaceae;;-36;einheimisch;conifers
-Pseudotsuga menziesii;3,14;2,17;3,22;1,79;2,44;2,66;2,82;Douglasie;Kieferngewächse;Pinaceae;;-24;Nordamerika;conifers
-Tsuga heterophylla;1,17;1;4,96;1;2;1,09;1,11;Westliche Hemlockstanne;Kieferngewächse;Pinaceae;Flachwurzler;-20;Nordamerika;conifers
-Liriodendron tulipifera;2,6;1,83;2,07;1,3;4;2,22;2,34;Tulpenbaum;Magnoliengewächse;Magnoliaceae;;-20;Nordamerika;broadleaves
-Tilia cordata;3,68;3,88;4,55;1,83;2,76;3,78;3,75;Winter-Linde;Malvengewächse;Malvaceae;Pfahlwurzel;-28;einheimisch;broadleaves
-Tilia platyphyllos;2,77;3,44;4,25;1,02;3,33;3,11;2,99;Sommer-Linde;Malvengewächse;Malvaceae;Pfahlwurzel;-28;einheimisch;broadleaves
-Tilia tomentosa;2,81;4;3,34;1,52;3,25;3,41;3,21;Silber-Linde;Malvengewächse;Malvaceae;Pfahlwurzel;-28;einheimisch;broadleaves
-Fraxinus excelsior;1,9;1,52;2,58;2,7;4,6;1,71;1,77;Gemeine Esche;Ölbaumgewächse;Oleaceae;Pfahlwurzel;-32;einheimisch;broadleaves
-Fraxinus ornus;4,31;1,78;3,02;2,5;2,2;3,05;3,47;Manna-Esche;Ölbaumgewächse;Oleaceae;;-20;Südeuropa;broadleaves
-Malus sylvestris;3,05;3,07;1,66;1,68;2,8;3,06;3,06;Holz-Apfel;Rosengewächse;Rosaceae;;;einheimisch;broadleaves
-Prunus avium;3,53;3,11;1,78;1,19;4;3,32;3,39;Vogel-Kirsche;Rosengewächse;Rosaceae;Herzwurzler;-32;Asien;broadleaves
-Pyrus pyraster;3,16;2,07;1,63;1,77;2,8;2,61;2,79;Holz-Birne;Rosengewächse;Rosaceae;;-24;einheimisch;broadleaves
-Sorbus aria;4,14;4,17;3;1,32;2,13;4,15;4,15;Echte Mehlbeere;Rosengewächse;Rosaceae;;-20;einheimisch;broadleaves
-Sorbus aucuparia;3,7;5;2,87;1,76;2,3;4,35;4,14;Eberesche;Rosengewächse;Rosaceae;;-36;einheimisch;broadleaves
-Sorbus domestica;3,26;3,42;3,53;1,04;2,05;3,34;3,31;Speierling;Rosengewächse;Rosaceae;;-20;einheimisch;broadleaves
-Sorbus torminalis;4,19;3,73;3,19;1,04;2,4;3,96;4,03;Elsbeere;Rosengewächse;Rosaceae;;-20;einheimisch;broadleaves
-Acer campestre;3,48;3,28;3,06;1,89;3,6;3,38;3,42;Feld-Ahorn;Seifenbaumgewächse;Sapindaceae;Herzwurzler;-24;einheimisch;broadleaves
-Acer platanoides;2,61;3,48;3,8;1,46;2,99;3,05;2,9;"	Spitz-Ahorn";Seifenbaumgewächse;Sapindaceae;Herzwurzler;-32;einheimisch;broadleaves
-Acer pseudoplatanus;2,35;3,56;3,6;1,1;4,16;2,96;2,75;Berg-Ahorn;Seifenbaumgewächse;Sapindaceae;Herzwurzler;-24;einheimisch;broadleaves
-Ilex aquifolium;3,04;1,33;3,86;1,39;2,75;2,19;2,47;Stechpalme;Stechpalmengewächse;Aquifoliaceae;Tiefwurzler;-20;einheimisch;broadleaves
-Ulmus laevis;1,74;4,11;2,89;2,83;4;2,92;2,53;Flatter-Ulme;Ulmengewächse;Ulmaceae;Tiefwurzler;-28;einheimisch;broadleaves
-Juglans nigra;2,38;1;1,97;1,83;3,65;1,69;1,92;Schwarznuss;Walnussgewächse;Juglandaceae;;-24;Nordamerika;broadleaves
-Juglans regia;3,49;1,8;1,64;1,42;3,65;2,65;2,93;Echte Walnuss;Walnussgewächse;Juglandaceae;Pfahlwurzel;-20;einheimisch;broadleaves
-Populus tremula;2,39;4,92;1,56;2,07;1,63;3,66;3,24;Zitter-Pappel;Weidengewächse;Salicaceae;Flachwurzler;-36;einheimisch;broadleaves
-Salix caprea;2,24;3;2,16;2,84;3,3;2,62;2,49;Sal-Weide;Weidengewächse;Salicaceae;Flachwurzler;-32;einheimisch;broadleaves
-Juniperus communis;4,41;5;1,71;2,07;1,8;4,71;4,61;Gemeiner Wacholder;Zypressengewächse;Cupressaceae;;-40;einheimisch;conifers
-Thuja plicata;2,23;1;4,73;1,01;2;1,62;1,82;Riesen-Lebensbaum;Zypressengewächse;Cupressaceae;;-20;Nordamerika;conifers
+Species,Drought tolerance,Late frost tolerance (recruitment),Shade tolerance,Waterlogging tolerance,Nutrient requirements,Score (drought and late frost),Score (drought x 2 and late frost),name_dt,family_dt,family_lt,type
+Abies alba,2.43,1.29,4.9,1.02,2.4,1.86,2.05,Weiß-tanne,Kieferngewächse,Pinaceae,conifers
+Abies grandis,2.33,2.78,4.01,1.57,3,2.55,2.48,Küsten-Tanne,Kieferngewächse,Pinaceae,conifers
+Acer campestre,3.48,3.45,3.06,1.89,3.73,3.47,3.47,Feld-Ahorn,Seifenbaumgewächse,Sapindaceae,broadleaves
+Acer platanoides,2.61,3.48,3.8,1.46,3.33,3.04,2.9,	Spitz-Ahorn,Seifenbaumgewächse,Sapindaceae,broadleaves
+Acer pseudoplatanus,2.35,3.56,3.6,1.1,4.12,2.95,2.75,Berg-Ahorn,Seifenbaumgewächse,Sapindaceae,broadleaves
+Alnus glutinosa,1.31,3.73,1.57,3.9,4.33,2.52,2.11,Schwarz-Erle,Birkengewächse,Betulaceae,broadleaves
+Alnus incana,2.64,4.83,1.58,2.84,2.13,3.74,3.37,Grau-Erle,Birkengewächse,Betulaceae,broadleaves
+Betula maximowicziana,1.57,4.5,1.25,1.25,2.5,3.04,2.55,Lindenblättrige Birke,Birkengewächse,Betulaceae,broadleaves
+Betula pendula,2.77,4.67,1.26,1.67,1.3,3.72,3.4,Hänge-Birke,Birkengewächse,Betulaceae,broadleaves
+Carpinus betulus,2.83,2.71,4.24,1.65,3.12,2.77,2.79,Hainbuche,Birkengewächse,Betulaceae,broadleaves
+Castanea sativa,4.15,1.47,3.58,1.32,2.3,2.81,3.26,Ess-Kastanie,Buchengewächse,Fagaceae,broadleaves
+Cedrus libani,2.75,1,1.35,1.03,2.5,1.88,2.17,Libanon Zeder,Kieferngewächse,Pinaceae,conifers
+Corylus avellana,3.04,3,3.53,1.68,3.3,3.02,3.03,Gemeine Hasel,Birkengewächse,Betulaceae,broadleaves
+Corylus colurna,3.57,2.5,2.37,1.53,1.89,3.03,3.21,Baum-Hasel,Birkengewächse,Betulaceae,broadleaves
+Fagus orientalis,2.7,1.5,4.2,1,3,2.1,2.3,Orient-Buche,Buchengewächse,Fagaceae,broadleaves
+Fagus sylvatica,2.15,1.69,4.89,1.02,2.58,1.92,1.99,Gemeine Buche,Buchengewächse,Fagaceae,broadleaves
+Fraxinus excelsior,1.9,1.52,2.58,2.7,4.7,1.71,1.77,Gemeine Esche,Ölbaumgewächse,Oleaceae,broadleaves
+Fraxinus ornus,4.31,1.92,3.02,2.5,2.2,3.11,3.51,Manna-Esche,Ölbaumgewächse,Oleaceae,broadleaves
+Ilex aquifolium,3.04,1.25,3.86,1.39,2.75,2.15,2.44,Stechpalme,Stechpalmengewächse,Aquifoliaceae,broadleaves
+Juglans nigra,2.38,1,1.97,1.83,3.65,1.69,1.92,Schwarznuss,Walnussgewächse,Juglandaceae,broadleaves
+Juglans regia,3.49,1.5,1.64,1.42,3.83,2.5,2.83,Echte Walnuss,Walnussgewächse,Juglandaceae,broadleaves
+Juniperus communis,4.41,5,1.71,2.07,1.8,4.71,4.61,Gemeiner Wacholder,Zypressengewächse,Cupressaceae,conifers
+Larix decidua,2.06,3.74,1.12,1.1,2.13,2.9,2.62,Europäische Lärche,Kieferngewächse,Pinaceae,conifers
+Larix kaempferi,2,3.67,1.86,1.58,1.89,2.83,2.56,Japanische Lärche,Kieferngewächse,Pinaceae,conifers
+Liriodendron tulipifera,2.6,1.75,2.07,1.3,4,2.18,2.32,Tulpenbaum,Magnoliengewächse,Magnoliaceae,broadleaves
+Malus sylvestris,3.05,2.83,1.66,1.68,3.4,2.94,2.98,Holz-Apfel,Rosengewächse,Rosaceae,broadleaves
+Ostrya carpinifolia,3.07,3,3.94,1.41,3,3.04,3.05,Hopfenbuche,Birkengewächse,Betulaceae,broadleaves
+Paulownia tomentosa,3,1.63,2,1,2,2.31,2.54,Chinesischer Blauglockenbaum,Braunwurzgewächse,Scrophulariaceae,broadleaves
+Picea abies,1.55,3.22,4.28,1.22,2.23,2.39,2.11,Gemeine Fichte,Kieferngewächse,Pinaceae,conifers
+Pinus nigra,4.79,3.33,2.1,1.39,1.65,4.06,4.31,Schwarz-Kiefer,Kieferngewächse,Pinaceae,conifers
+Pinus sylvestris,4.72,4.93,1.56,2.63,1.13,4.83,4.79,Wald-Kiefer,Kieferngewächse,Pinaceae,conifers
+Populus tremula,2.39,4.92,1.56,2.07,1.48,3.66,3.24,Zitter-Pappel,Weidengewächse,Salicaceae,broadleaves
+Prunus avium,3.53,3.13,1.78,1.19,4,3.33,3.4,Vogel-Kirsche,Rosengewächse,Rosaceae,broadleaves
+Pseudotsuga menziesii,3.14,2.17,3.22,1.79,2.42,2.66,2.82,Douglasie,Kieferngewächse,Pinaceae,conifers
+Pyrus pyraster,3.16,2.08,1.63,1.77,4,2.62,2.8,Holz-Birne,Rosengewächse,Rosaceae,broadleaves
+Quercus petraea,3.34,2.51,2.35,1.2,2.17,2.92,3.06,Trauben-Eiche,Buchengewächse,Fagaceae,broadleaves
+Quercus pubescens,4.37,2.29,2.31,1.39,2.25,3.33,3.68,Flaum-Eiche,Buchengewächse,Fagaceae,broadleaves
+Quercus robur,2.72,2.47,1.7,1.89,2.75,2.6,2.64,Stiel-Eiche,Buchengewächse,Fagaceae,broadleaves
+Quercus rubra,2.61,2.57,3.21,1.12,2.17,2.59,2.59,Rot-Eiche,Buchengewächse,Fagaceae,broadleaves
+Robinia pseudoacacia,4.11,2.22,1.72,1.07,4.25,3.17,3.48,Robinie,Hülsenfrüchtler,Fabaceae,broadleaves
+Salix caprea,2.24,3,2.16,2.84,3.3,2.62,2.49,Sal-Weide,Weidengewächse,Salicaceae,broadleaves
+Sorbus aria,4.14,4.17,3,1.32,3.48,4.15,4.15,Echte Mehlbeere,Rosengewächse,Rosaceae,broadleaves
+Sorbus aucuparia,3.7,5,2.87,1.76,1.65,4.35,4.14,Eberesche,Rosengewächse,Rosaceae,broadleaves
+Sorbus domestica,3.26,3.22,3.53,1.04,2.05,3.24,3.25,Speierling,Rosengewächse,Rosaceae,broadleaves
+Sorbus torminalis,4.19,3.67,3.19,1.04,3.7,3.93,4.01,Elsbeere,Rosengewächse,Rosaceae,broadleaves
+Taxus baccata,3,3.73,4.48,1.32,3.93,3.37,3.25,Gemeine Eibe,Eibengewächse,Taxaceae,conifers
+Thuja plicata,2.23,1,4.73,1.01,2,1.62,1.82,Riesen-Lebensbaum,Zypressengewächse,Cupressaceae,conifers
+Tilia cordata,3.68,3.88,4.55,1.83,2.82,3.78,3.75,Winter-Linde,Malvengewächse,Malvaceae,broadleaves
+Tilia platyphyllos,2.77,3.44,4.25,1.02,3.5,3.11,3,Sommer-Linde,Malvengewächse,Malvaceae,broadleaves
+Tilia tomentosa,2.81,4,3.34,1.52,3.25,3.41,3.21,Silber-Linde,Malvengewächse,Malvaceae,broadleaves
+Tsuga heterophylla,1.17,1,4.96,1,2,1.09,1.11,Westliche Hemlockstanne,Kieferngewächse,Pinaceae,conifers
+Ulmus laevis,1.74,4.13,2.89,2.83,4.33,2.94,2.54,Flatter-Ulme,Ulmengewächse,Ulmaceae,broadleaves
