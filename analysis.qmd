@@ -32,17 +32,22 @@ theme_set(theme_classic())
 
 ```{r load}
 dat = fread("data/all_traits.csv", encoding = 'Latin-1')
-colnames(dat)[1:8] = c("species", "drought", "late_frost", "shade", "waterlogging",
+colnames(dat)[1:8] = c("species", "drought", "late_frost", "shade",
+                       "waterlogging",
                        "nutrients", "score_1", "score_2")
 
 
 dat = dat %>% 
+  mutate(score_1 = (drought + late_frost) / 2,
+         score_2 = (2*drought + late_frost) / 3) %>% 
   mutate(cat = ifelse(score_1 > 4, "very suitable (4, 5]",
                       ifelse(score_1 > 3, "suitable (3, 4]",
-                             ifelse(score_1 > 2, "partially suitable (2, 3]",
+                             ifelse(score_1 > 2,
+                                    "partially suitable (2, 3]",
                                     "unsuitable (1, 2]")))) 
 
-lbl_dict = fread("data/label_dict.csv", encoding = 'Latin-1')
+lbl_dict = fread("data/label_dict.csv", 
+                 encoding = 'Latin-1')
 
 dat = dat %>% 
   left_join(., lbl_dict, by = c("cat" = "english")) %>% 
@@ -60,7 +65,7 @@ dat = dat %>%
                                  "teilweise geeignet (2, 3]", "ungeeignet (1, 2]")))
 ```
 
-# Table 1
+# Figure 2
 
 ```{r fig.height=8.5}
 dat %>% 
@@ -87,10 +92,10 @@ dat %>%
         axis.text.y = element_text(face = "italic", size = 12),
         axis.text.x = element_text(size = 12))
 
-ggsave("figs/tab1.jpg", width = 8.5, height = 12)
+ggsave("figs/fig_2_traits.jpg", width = 8.5, height = 12)
 ```
 
-# Table 2
+# Figure 3
 
 ```{r fig.height=8}
 h = dat %>% 
@@ -130,10 +135,10 @@ h %>%
   labs(fill = "\u0394 rank",
        color = "\u0394 rank")
   
-ggsave("figs/table_2_as_figure.jpg", height = 10, width = 7)
+ggsave("figs/fig_3_scores.jpg", height = 10, width = 7)
 ```
 
-# Figure 2
+# Figure 4
 
 ::: panel-tabset
 ## Label EN
@@ -168,7 +173,7 @@ dat %>%
        shape = lbl_dict[lbl_dict$short == "func_group", "english"][[1]]) +
   theme(text = element_text(size = 13))
 
-ggsave(paste("figs/fig_2_drought_frost.jpg", sep = ""), width = 8.5, height = 5)
+ggsave(paste("figs/fig_4_drought_frost.jpg", sep = ""), width = 8.5, height = 5)
 ```
 
 ## Label DE
@@ -203,11 +208,11 @@ dat %>%
        shape = lbl_dict[lbl_dict$short == "func_group", "deutsch"][[1]]) +
   theme(text = element_text(size = 13))
 
-ggsave(paste("figs/fig_2_drought_frost_de.jpg", sep = ""), width = 8.5, height = 5)
+ggsave(paste("figs/fig_4_drought_frost_de.jpg", sep = ""), width = 8.5, height = 5)
 ```
 :::
 
-# Figure 3
+# Figure 5
 
 ::: panel-tabset
 ## Label EN
@@ -242,7 +247,7 @@ dat %>%
        shape = lbl_dict[lbl_dict$short == "func_group", "english"][[1]]) +
   theme(text = element_text(size = 13))
 
-ggsave(paste("figs/fig_3_nutrients_waterlogging.jpg", sep = ""), width = 8.5, height = 5)
+ggsave(paste("figs/fig_5_nutrients_waterlogging.jpg", sep = ""), width = 8.5, height = 5)
 ```
 
 ## Label DE
@@ -277,11 +282,11 @@ dat %>%
        shape = lbl_dict[lbl_dict$short == "func_group", "deutsch"][[1]]) +
   theme(text = element_text(size = 13))
 
-ggsave(paste("figs/fig_3_nutrients_waterlogging_de.jpg", sep = ""), width = 8.5, height = 5)
+ggsave(paste("figs/fig_5_nutrients_waterlogging_de.jpg", sep = ""), width = 8.5, height = 5)
 ```
 :::
 
-# Figure 4
+# Figure 6
 
 ::: panel-tabset
 ```{r}
@@ -322,7 +327,8 @@ ggarrange(p1, ggplot() + theme_void(), p2, ncol = 1,
           legend = "bottom",
           common.legend = T)
 
-ggsave(paste("figs/fig_4_", trait, "_density2.jpg", sep = ""), width = 6, height = 7.3)
+ggsave(paste("figs/fig_6_", trait, "_density.jpg", sep = ""), 
+       width = 6, height = 7.3)
 ```
 
 ## Label DE
@@ -353,7 +359,8 @@ ggarrange(p1, ggplot() + theme_void(), p2, ncol = 1,
           legend = "bottom",
           common.legend = T)
 
-ggsave(paste("figs/fig_4_", trait, "_density_de.jpg", sep = ""), width = 9, height = 7.3)
+ggsave(paste("figs/fig_6_", trait, "_density_de.jpg", sep = ""), 
+       width = 6, height = 7.3)
 ```
 :::
 

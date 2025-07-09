@@ -7,10 +7,10 @@ nutrients;Nutrient requirements;Nährstoffbedarf
 score;Score;Score
 score_1;Score (drought and late frost);Score (Trockenheit and late frost)
 score_2;Score (drought x 2 and late frost);Score (Trockenheit x 2 and late frost)
-suit_vs;very suitable;sehr geeignet
-suit_s;suitable;geeignet
-suit_ps;partially suitable;teilweise geeignet
-suit_u;unsuitable;ungeeignet
+suit_vs;very suitable (4, 5];sehr geeignet (4, 5]
+suit_s;suitable (3, 4];geeignet (3, 4]
+suit_ps;partially suitable (2, 3];teilweise geeignet (2, 3]
+suit_u;unsuitable (1, 2];ungeeignet (1, 2]
 func_group;Functional group;Funktionale Gruppe
 conifers;conifers;Nadelbaumart
 broadleaves;broadleaves;Laubbaumart
