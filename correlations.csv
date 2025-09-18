@@ -1,6 +1,6 @@
 Trait,Shapiro-Wilk p-value,Spearman's r,Spearman's p-value
-drought,5.4e-01,0.63,6.9e-07
-late_frost,6.6e-02,0.8,1.3e-12
-shade,5.2e-03,-0.23,1e-01
-waterlogging,4.2e-06,0.3,3e-02
-nutrients,1.5e-01,-0.19,1.8e-01
+drought,6.3e-01,0.63,3.7e-07
+late_frost,7.7e-02,0.79,1.9e-12
+shade,5.3e-03,-0.23,1e-01
+waterlogging,2.9e-06,0.29,3.3e-02
+nutrients,1.4e-01,-0.19,1.7e-01

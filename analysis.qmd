@@ -112,7 +112,7 @@ h %>%
   ggplot(., aes(x = factor(key), y = value, label = interaction(value.rev, species))) +
   annotate("rect",
            xmin = 0.5, xmax = 2.5,
-           ymin = 42.5, ymax = 52.5,
+           ymin = 43.5, ymax = 53.5,
             col = "darkblue", fill = NA, linewidth = 1) +
   geom_line(aes(group = species, col = d, size = abs(d))) +
   geom_point(size = .5) +
@@ -364,7 +364,8 @@ ggsave(paste("figs/fig_6_", trait, "_density_de.jpg", sep = ""),
 ```
 :::
 
-# Correlations: Score \~ site conditions
+# Correlations
+## Score \~ site conditions
 
 ```{r}
 res = data.frame()
@@ -395,3 +396,62 @@ res %>%
 ```{r}
 cor.test(dat$drought, dat$late_frost, method = "spearman")
 ```
+
+## New rankings with Ellenberg
+
+```{r warning=F, fig.height=7, out.width = "80%"}
+dat = fread("data/Thom_vs_Ellenberg.csv")
+dat[dat == "-"] = NA
+dat[, 2:5] = lapply(dat[, 2:5], function(i) gsub(",", ".", i))
+dat[, 2:5] = lapply(dat[, 2:5], as.numeric)
+
+h_frost = dat %>% 
+  filter(!is.na(Frost_Ellenberg)) 
+
+cor.test(h_frost$Frost_Thom, h_frost$Frost_Ellenberg, method = "spearman")
+
+h_drought = dat %>% 
+  filter(!is.na(Drought_Ellenberg))
+cor.test(h_drought$Drought_Thom, h_drought$Drought_Ellenberg, method = "spearman")
+
+
+cat("Ellenberg values FROST were available for", nrow(h_frost), "out of", nrow(dat), "species.")
+cat("Ellenberg values DROUGHT were available for", nrow(h_drought), "out of", nrow(dat), "species.")
+
+p1 = h_frost %>% 
+  ggplot(., aes(x = Frost_Thom, y = Frost_Ellenberg)) +
+  geom_smooth(method = "lm", se = F, col = "grey") +
+  geom_point() +
+  geom_label_repel(aes(label = Species), 
+                   alpha = 0.65, 
+                   fill = "white",
+                   segment.size = 0.05,
+                   min.segment.length = 0,
+                   label.size = NA,
+                   label.padding = 0.01,
+                   size = 2.5, 
+                   show.legend = F) +
+  stat_cor(method = "spearman") +
+  labs(x = paste(lbl_dict[lbl_dict$short == "late_frost", "english"][[1]], "(Thom et al.)"),
+       y = paste(lbl_dict[lbl_dict$short == "late_frost", "english"][[1]], "(Ellenberg 1986)"))
+
+p2 = h_drought %>% 
+  ggplot(., aes(x = Drought_Thom, y = Drought_Ellenberg)) +
+  geom_smooth(method = "lm", se = F, col = "grey") +
+  geom_point() +
+  geom_label_repel(aes(label = Species), 
+                   alpha = 0.65, 
+                   fill = "white",
+                   segment.size = 0.05,
+                   min.segment.length = 0,
+                   label.size = NA,
+                   label.padding = 0.01,
+                   size = 2.5, 
+                   show.legend = F) +
+  stat_cor(method = "spearman") +
+  labs(x = paste(lbl_dict[lbl_dict$short == "drought", "english"][[1]], "(Thom et al.)"),
+       y = paste(lbl_dict[lbl_dict$short == "drought", "english"][[1]], "(Ellenberg 1986)"))
+
+ggarrange(p1, p2, ncol = 1, nrow = 2)
+```
+
