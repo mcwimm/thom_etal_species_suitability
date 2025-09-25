@@ -38,8 +38,8 @@ colnames(dat)[1:8] = c("species", "drought", "late_frost", "shade",
 
 
 dat = dat %>% 
-  mutate(score_1 = (drought + late_frost) / 2,
-         score_2 = (2*drought + late_frost) / 3) %>% 
+  # mutate(score_1 = (drought + late_frost) / 2,
+  #        score_2 = (2*drought + late_frost) / 3) %>%
   mutate(cat = ifelse(score_1 > 4, "very suitable (4, 5]",
                       ifelse(score_1 > 3, "suitable (3, 4]",
                              ifelse(score_1 > 2,
@@ -99,37 +99,35 @@ ggsave("figs/fig_2_traits.jpg", width = 8.5, height = 12)
 
 ```{r fig.height=8}
 h = dat %>% 
-  mutate(r1 = rank(score_1, ties.method = "random"),
-         r2 = rank(score_2, ties.method = "random"),
-         d = r2 - r1) %>% 
+  mutate(d = r1 - r2) %>% 
   gather(., key, value, r1, r2) %>% 
   group_by(species) %>% 
   mutate(hjust = ifelse(key == "r1", 1, 0)) %>% 
   mutate(key = factor(key, levels = c("r1", "r2")))
 
+
 h %>% 
-  mutate(value.rev = 53 - value) %>% 
-  ggplot(., aes(x = factor(key), y = value, label = interaction(value.rev, species))) +
+  mutate(value.rev = 54 - value) %>% 
+  ggplot(., aes(x = factor(key), y = value, 
+                label = interaction(value, species))) +
   annotate("rect",
            xmin = 0.5, xmax = 2.5,
-           ymin = 43.5, ymax = 53.5,
+           ymin = .5, ymax = 10.5,
             col = "darkblue", fill = NA, linewidth = 1) +
   geom_line(aes(group = species, col = d, size = abs(d))) +
   geom_point(size = .5) +
   geom_label(size = 3, aes(fill = d, alpha = d, hjust = hjust),
              show.legend = F) +
   geom_text(h %>% filter(key == "r1"),
-            mapping=aes(x = key, label = d), hjust = 0, #-0.5
+            mapping=aes(x = key, y = value, label = d), hjust = 0, #-0.5
             vjust = 0,
             size = 2.5, col = "grey2") +
-  annotate("text", x = 0.5, y = 50, angle = 90, label = "Top 10", vjust = 0,
+  annotate("text", x = 0.5, y = 8, angle = 90, label = "Top 10", vjust = 0,
            alpha = .8, col = "darkblue") +
   scale_fill_gradient2(low = "darkblue", high = "orange", mid = "grey") +
   scale_color_gradient2(low = "darkblue", high = "orange", mid = "grey") +
-  # scale_color_viridis_c() +
-  # scale_fill_viridis_c() +
-  # scale_y_reverse() +
   scale_size_continuous(range  = c(0.2, 1.2)) +
+  scale_y_reverse() +
   guides(size = F) +
   theme_void() +
   labs(fill = "\u0394 rank",
@@ -365,6 +363,7 @@ ggsave(paste("figs/fig_6_", trait, "_density_de.jpg", sep = ""),
 :::
 
 # Correlations
+
 ## Score \~ site conditions
 
 ```{r}
@@ -454,4 +453,3 @@ p2 = h_drought %>%
 
 ggarrange(p1, p2, ncol = 1, nrow = 2)
 ```
-
