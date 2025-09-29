@@ -308,7 +308,7 @@ p2 = dat %>%
   ggplot(., aes(x = species, y = !!trait, 
                 fill = cat)) +
   geom_bar(stat = "identity", alpha = 0.6, linewidth = 0.1) +
-  geom_text(aes(label = !!trait), nudge_y = 0.1, size = 2.5) +
+  geom_text(aes(label = format(!!trait, digits = 3)), nudge_y = 0.1, size = 2.5) +
   scale_fill_viridis_d(option = "inferno", direction = -1, end = 0.9) +  
   scale_color_viridis_d(option = "inferno", direction = -1, end = 0.9) +
   scale_y_continuous(breaks = 1:5,
@@ -340,7 +340,7 @@ p2 = dat %>%
   ggplot(., aes(x = name_dt, y = !!trait, 
                 fill = cat_de)) +
   geom_bar(stat = "identity", alpha = 0.6, linewidth = 0.1) +
-  geom_text(aes(label = !!trait), nudge_y = 0.1, size = 2.5) +
+  geom_text(aes(label = format(!!trait, digits = 3)), nudge_y = 0.1, size = 2.5) +
   scale_fill_viridis_d(option = "inferno", direction = -1, end = 0.9) +  
   scale_color_viridis_d(option = "inferno", direction = -1, end = 0.9) +
   scale_y_continuous(breaks = 1:5,
